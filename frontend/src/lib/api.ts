@@ -1,7 +1,14 @@
 import axios from 'axios';
 
+let baseURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+
+// If baseURL is just a hostname (no protocol), assume HTTPS and append /api
+if (baseURL && !baseURL.startsWith('http')) {
+    baseURL = `https://${baseURL}/api`;
+}
+
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api',
+    baseURL: baseURL,
     headers: {
         'Content-Type': 'application/json',
     },

@@ -30,7 +30,7 @@ services:
         fromService:
           type: web
           name: vibeops-backend
-          property: url
+          property: host
 
 databases:
   - name: vibeops-db
